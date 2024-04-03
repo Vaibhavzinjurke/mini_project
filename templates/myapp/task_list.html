@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>home page</title>
+</head>
+<body>
+    <h1> List of task</h1>
+    <ul>
+        {% for task in tasks %}
+        <li>
+            <input type="checkbox" {% if task.completed %}checked{% endif %}.ponclick='window.location.href="{% url "complete_task" task.id %}";'>
+
+            {{ task.title }}
+            <a href="{% url 'delete_task' task.id %}">Delete</a>
+        </li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'add_task' %}">Add Task</a>
+</body>
+</html>
+
